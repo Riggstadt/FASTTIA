@@ -1,0 +1,549 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11/15/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2:49:30 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc">C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">63</td></tr>
+</table>
+</td>
+</table><a name="IDOEHT3FZBQOUYLMD454RRO5LVHPHSUHBNJL01LSCEJZ0BAEHICLWF"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4YOGKY3I4FKHPVYPPAXK4242SIROQCXZOWCT4IL5IMABRJLEU0TL">Clearance Constraint (Gap=10mil) (InNetClass('POWER')),(InNetClass('POWER'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDYAJVYFR003E2OOKVIR4PMUUYIJHVR4BK2RYP4BP1G3EIIBOJ4RJI">Clearance Constraint (Gap=39.37mil) (All),(OnLayer('Board Outline'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSY0YKIG5JGDGJPZ1CO4GE2TLDDFGQRYC5KK2KXMMSLQR314S1QLI">Clearance Constraint (Gap=5mil) (InNet('NetR5_2')),(InNet('GND'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUJD2FSMTTXMQJY1BA5RI5C2QXDPL0T0IWVN344AY0MYGNAQNERO">Clearance Constraint (Gap=5mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5KYCQXDD1CWVLEWDR4FKLV2QIISKHGM0FZJIDMCHQJ0W5AWGSM2">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID24NGND35FWGKNP5IZXV4ANCWPO51JTJYPPKE2JH04NSCDLKU4C1D">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">57</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDM45PYUYDV40HJB3FI0SZAJSL1HTRW0FSC2BXNFBQZC51SLVCFNWL">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0AF0HLDK0JPAGWZYLZF0CZJA5GDFQZZCYF135FMRUG4GX5RLXX1H">Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID02M0AN54HXZOFFJNRKSHO5WOBFJJ5EPOAT1M5ALSRZZTV5RHJFRG">Width Constraint (Min=7.039mil) (Max=9.897mil) (Preferred=9.897mil) (InNetClass('TL'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWWQDFO2TC3PMBT0CLHIHF5SGMIL15S31NZHW35IWCBCAXRDI1HBK">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5PH2N0ZBGHHSDWI24LFAUSTX0HEFQBNLATVGUEMF05BGRGTCKAGH">Hole Size Constraint (Min=1mil) (Max=157.48mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTLNA2DUDHQYQOF3MOL1LI0T2BFKUDO4NUJP1UGTABM5BGEWRK4B">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID12GLNKW4YFYYGVE3KJ0WMW5GECQYULE2GGK5EZEERVCDXRJV52WI">Minimum Solder Mask Sliver (Gap=3.937mil) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTMS0SZJK3Q5LKNX30RXM5IIHKLLS2E10S1H0JHO0PK2HSBXN5RK">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRWYK1TSPA5BEJN52HSXAVPAO1ID01OTQJH0ZADHX15RKOOREHTFG">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFGJR04XYXME0J5VLLZ1GYGRJZJ5YUTAYP23CVNFDLOCBTEHB5FQF">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDADE4ZQCRKVMLM5UMFRTRQ0B5GKBMYHOEOWZIMAOIRMJMYI055LDF">Board Clearance Constraint (Gap=0mil) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDII3EAQJISOK0MJ0SF0IZ3TTHXGYS5OP1HY1JLPM2CM1YYZZIMZ5O">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">63</td>
+</tr>
+</table><br><a name="ID24NGND35FWGKNP5IZXV4ANCWPO51JTJYPPKE2JH04NSCDLKU4C1D"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12885.99mil|Location2.X=12934.519mil|Location1.Y=155.036mil|Location2.Y=285.537mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12885.99mil|Location2.X=12934.519mil|Location1.Y=155.036mil|Location2.Y=285.537mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C2-1(12909.731mil,264.706mil) on Bottom Layer And Pad C1-1(12911.818mil,179.706mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12885.99mil|Location2.X=12991.651mil|Location1.Y=243.875mil|Location2.Y=659.637mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12885.99mil|Location2.X=12991.651mil|Location1.Y=243.875mil|Location2.Y=659.637mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C2-1(12909.731mil,264.706mil) on Bottom Layer And Pad J1-2(12956.155mil,624.141mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12534.131mil|Location2.X=12933.472mil|Location1.Y=243.875mil|Location2.Y=300.329mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12534.131mil|Location2.X=12933.472mil|Location1.Y=243.875mil|Location2.Y=300.329mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R2-1(12553.004mil,280.406mil) on Bottom Layer And Pad C2-1(12909.731mil,264.706mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12682.411mil|Location2.X=12880.238mil|Location1.Y=243.875mil|Location2.Y=360.483mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12682.411mil|Location2.X=12880.238mil|Location1.Y=243.875mil|Location2.Y=360.483mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R1-2(12704.187mil,337.749mil) on Bottom Layer And Pad C2-2(12856.496mil,264.706mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12756.496mil|Location2.X=12956.496mil|Location1.Y=79.706mil|Location2.Y=364.706mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12756.496mil|Location2.X=12956.496mil|Location1.Y=79.706mil|Location2.Y=364.706mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Track (12854.731mil,179.706mil)(12856.496mil,179.706mil) on Bottom Layer And Pad C2-2(12856.496mil,264.706mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12682.411mil|Location2.X=12794.801mil|Location1.Y=315.015mil|Location2.Y=659.637mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12682.411mil|Location2.X=12794.801mil|Location1.Y=315.015mil|Location2.Y=659.637mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R1-2(12704.187mil,337.749mil) on Bottom Layer And Pad J1-1(12759.305mil,624.141mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12040.118mil|Location2.X=12864.882mil|Location1.Y=16.837mil|Location2.Y=176.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12040.118mil|Location2.X=12864.882mil|Location1.Y=16.837mil|Location2.Y=176.811mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R4-1(12140.118mil,116.837mil) on Bottom Layer And Track (12764.882mil,76.811mil)(12818.583mil,76.811mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13514.094mil|Location2.X=13683.701mil|Location1.Y=109.331mil|Location2.Y=160.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13514.094mil|Location2.X=13683.701mil|Location1.Y=109.331mil|Location2.Y=160.827mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad SMA1-2(13598.898mil,135.079mil) on Top Layer And Pad SMA1-4(13598.898mil,135.079mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12044.095mil|Location2.X=12888.69mil|Location1.Y=22.401mil|Location2.Y=706.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12044.095mil|Location2.X=12888.69mil|Location1.Y=22.401mil|Location2.Y=706.818mil|Absolute=True">Un-Routed Net Constraint: Polygon  (NONET_L-01_P-001) on Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11604.764mil|Location2.X=13695.315mil|Location1.Y=-595.276mil|Location2.Y=979.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11604.764mil|Location2.X=13695.315mil|Location1.Y=-595.276mil|Location2.Y=979.528mil|Absolute=True">Un-Routed Net Constraint: Polygon  (NONET_L-01_P-001) on Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11604.764mil|Location2.X=13695.315mil|Location1.Y=-595.276mil|Location2.Y=979.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11604.764mil|Location2.X=13695.315mil|Location1.Y=-595.276mil|Location2.Y=979.528mil|Absolute=True">Un-Routed Net Constraint: Polygon  (NONET_L-01_P-001) on Mid-Layer 1 Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11604.764mil|Location2.X=13695.315mil|Location1.Y=-595.276mil|Location2.Y=979.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11604.764mil|Location2.X=13695.315mil|Location1.Y=-595.276mil|Location2.Y=979.528mil|Absolute=True">Un-Routed Net Constraint: Polygon  (NONET_L-01_P-001) on Mid-Layer 2 Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12737.047mil|Location2.X=12953.793mil|Location1.Y=16.535mil|Location2.Y=278.768mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12737.047mil|Location2.X=12953.793mil|Location1.Y=16.535mil|Location2.Y=278.768mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Via (12837.047mil,116.535mil) from Top Layer to Bottom Layer And Track (12853.793mil,178.768mil)(12854.731mil,179.706mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11699.216mil|Location2.X=11730.838mil|Location1.Y=229.636mil|Location2.Y=261.258mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11699.216mil|Location2.X=11730.838mil|Location1.Y=229.636mil|Location2.Y=261.258mil|Absolute=True">Un-Routed Net Constraint: Via (11715.027mil,245.447mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11776.775mil|Location2.X=11808.397mil|Location1.Y=-97.53mil|Location2.Y=-65.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11776.775mil|Location2.X=11808.397mil|Location1.Y=-97.53mil|Location2.Y=-65.908mil|Absolute=True">Un-Routed Net Constraint: Via (11792.586mil,-81.719mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11881.5mil|Location2.X=11913.122mil|Location1.Y=154.833mil|Location2.Y=186.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11881.5mil|Location2.X=11913.122mil|Location1.Y=154.833mil|Location2.Y=186.455mil|Absolute=True">Un-Routed Net Constraint: Via (11897.311mil,170.644mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11886.618mil|Location2.X=11918.24mil|Location1.Y=457.982mil|Location2.Y=489.604mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11886.618mil|Location2.X=11918.24mil|Location1.Y=457.982mil|Location2.Y=489.604mil|Absolute=True">Un-Routed Net Constraint: Via (11902.429mil,473.793mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12050.397mil|Location2.X=12082.019mil|Location1.Y=-403.041mil|Location2.Y=-371.419mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12050.397mil|Location2.X=12082.019mil|Location1.Y=-403.041mil|Location2.Y=-371.419mil|Absolute=True">Un-Routed Net Constraint: Via (12066.208mil,-387.23mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12055.515mil|Location2.X=12087.138mil|Location1.Y=863.494mil|Location2.Y=895.116mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12055.515mil|Location2.X=12087.138mil|Location1.Y=863.494mil|Location2.Y=895.116mil|Absolute=True">Un-Routed Net Constraint: Via (12071.326mil,879.305mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12106.63mil|Location2.X=12138.252mil|Location1.Y=-155.693mil|Location2.Y=-124.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12106.63mil|Location2.X=12138.252mil|Location1.Y=-155.693mil|Location2.Y=-124.071mil|Absolute=True">Un-Routed Net Constraint: Via (12122.441mil,-139.882mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12146mil|Location2.X=12177.622mil|Location1.Y=-155.693mil|Location2.Y=-124.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12146mil|Location2.X=12177.622mil|Location1.Y=-155.693mil|Location2.Y=-124.071mil|Absolute=True">Un-Routed Net Constraint: Via (12161.811mil,-139.882mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=113.992mil|Location2.Y=145.614mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=113.992mil|Location2.Y=145.614mil|Absolute=True">Un-Routed Net Constraint: Via (12244.882mil,129.803mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=212.417mil|Location2.Y=244.039mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=212.417mil|Location2.Y=244.039mil|Absolute=True">Un-Routed Net Constraint: Via (12244.882mil,228.228mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=15.567mil|Location2.Y=47.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=15.567mil|Location2.Y=47.189mil|Absolute=True">Un-Routed Net Constraint: Via (12244.882mil,31.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=310.842mil|Location2.Y=342.464mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=310.842mil|Location2.Y=342.464mil|Absolute=True">Un-Routed Net Constraint: Via (12244.882mil,326.654mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=-82.858mil|Location2.Y=-51.236mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12229.071mil|Location2.X=12260.693mil|Location1.Y=-82.858mil|Location2.Y=-51.236mil|Absolute=True">Un-Routed Net Constraint: Via (12244.882mil,-67.047mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12285.187mil|Location2.X=12316.809mil|Location1.Y=-211.946mil|Location2.Y=-180.324mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12285.187mil|Location2.X=12316.809mil|Location1.Y=-211.946mil|Location2.Y=-180.324mil|Absolute=True">Un-Routed Net Constraint: Via (12300.998mil,-196.135mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12327.496mil|Location2.X=12359.118mil|Location1.Y=310.842mil|Location2.Y=342.464mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12327.496mil|Location2.X=12359.118mil|Location1.Y=310.842mil|Location2.Y=342.464mil|Absolute=True">Un-Routed Net Constraint: Via (12343.307mil,326.654mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12364.177mil|Location2.X=12395.799mil|Location1.Y=-488.868mil|Location2.Y=-457.246mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12364.177mil|Location2.X=12395.799mil|Location1.Y=-488.868mil|Location2.Y=-457.246mil|Absolute=True">Un-Routed Net Constraint: Via (12379.988mil,-473.057mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12379.138mil|Location2.X=12410.76mil|Location1.Y=778.061mil|Location2.Y=809.683mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12379.138mil|Location2.X=12410.76mil|Location1.Y=778.061mil|Location2.Y=809.683mil|Absolute=True">Un-Routed Net Constraint: Via (12394.949mil,793.872mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12473.77mil|Location2.X=12505.392mil|Location1.Y=-214.702mil|Location2.Y=-183.08mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12473.77mil|Location2.X=12505.392mil|Location1.Y=-214.702mil|Location2.Y=-183.08mil|Absolute=True">Un-Routed Net Constraint: Via (12489.581mil,-198.891mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12475.778mil|Location2.X=12507.399mil|Location1.Y=265.81mil|Location2.Y=297.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12475.778mil|Location2.X=12507.399mil|Location1.Y=265.81mil|Location2.Y=297.432mil|Absolute=True">Un-Routed Net Constraint: Via (12491.588mil,281.621mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12538.77mil|Location2.X=12570.392mil|Location1.Y=336.676mil|Location2.Y=368.298mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12538.77mil|Location2.X=12570.392mil|Location1.Y=336.676mil|Location2.Y=368.298mil|Absolute=True">Un-Routed Net Constraint: Via (12554.581mil,352.487mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12583.402mil|Location2.X=12615.024mil|Location1.Y=-181.284mil|Location2.Y=-149.661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12583.402mil|Location2.X=12615.024mil|Location1.Y=-181.284mil|Location2.Y=-149.661mil|Absolute=True">Un-Routed Net Constraint: Via (12599.213mil,-165.472mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12622.772mil|Location2.X=12654.394mil|Location1.Y=-181.284mil|Location2.Y=-149.661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12622.772mil|Location2.X=12654.394mil|Location1.Y=-181.284mil|Location2.Y=-149.661mil|Absolute=True">Un-Routed Net Constraint: Via (12638.583mil,-165.472mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12790.555mil|Location2.X=12822.177mil|Location1.Y=-336.112mil|Location2.Y=-304.49mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12790.555mil|Location2.X=12822.177mil|Location1.Y=-336.112mil|Location2.Y=-304.49mil|Absolute=True">Un-Routed Net Constraint: Via (12806.366mil,-320.301mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12836.197mil|Location2.X=12867.819mil|Location1.Y=816.079mil|Location2.Y=847.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12836.197mil|Location2.X=12867.819mil|Location1.Y=816.079mil|Location2.Y=847.701mil|Absolute=True">Un-Routed Net Constraint: Via (12852.008mil,831.89mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12897.037mil|Location2.X=12928.659mil|Location1.Y=100.456mil|Location2.Y=132.078mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12897.037mil|Location2.X=12928.659mil|Location1.Y=100.456mil|Location2.Y=132.078mil|Absolute=True">Un-Routed Net Constraint: Via (12912.848mil,116.267mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12952.155mil|Location2.X=12983.777mil|Location1.Y=163.448mil|Location2.Y=195.07mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12952.155mil|Location2.X=12983.777mil|Location1.Y=163.448mil|Location2.Y=195.07mil|Absolute=True">Un-Routed Net Constraint: Via (12967.966mil,179.259mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12956.092mil|Location2.X=12987.714mil|Location1.Y=228.015mil|Location2.Y=259.637mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12956.092mil|Location2.X=12987.714mil|Location1.Y=228.015mil|Location2.Y=259.637mil|Absolute=True">Un-Routed Net Constraint: Via (12971.903mil,243.826mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12956.092mil|Location2.X=12987.714mil|Location1.Y=267.385mil|Location2.Y=299.007mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12956.092mil|Location2.X=12987.714mil|Location1.Y=267.385mil|Location2.Y=299.007mil|Absolute=True">Un-Routed Net Constraint: Via (12971.903mil,283.196mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13000.397mil|Location2.X=13032.019mil|Location1.Y=-523.12mil|Location2.Y=-491.498mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13000.397mil|Location2.X=13032.019mil|Location1.Y=-523.12mil|Location2.Y=-491.498mil|Absolute=True">Un-Routed Net Constraint: Via (13016.208mil,-507.309mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13090.555mil|Location2.X=13122.177mil|Location1.Y=-261.309mil|Location2.Y=-229.687mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13090.555mil|Location2.X=13122.177mil|Location1.Y=-261.309mil|Location2.Y=-229.687mil|Absolute=True">Un-Routed Net Constraint: Via (13106.366mil,-245.498mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13174.413mil|Location2.X=13206.035mil|Location1.Y=705.226mil|Location2.Y=736.848mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13174.413mil|Location2.X=13206.035mil|Location1.Y=705.226mil|Location2.Y=736.848mil|Absolute=True">Un-Routed Net Constraint: Via (13190.224mil,721.037mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13190.555mil|Location2.X=13222.177mil|Location1.Y=322.549mil|Location2.Y=354.171mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13190.555mil|Location2.X=13222.177mil|Location1.Y=322.549mil|Location2.Y=354.171mil|Absolute=True">Un-Routed Net Constraint: Via (13206.366mil,338.36mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13228.35mil|Location2.X=13259.972mil|Location1.Y=124.124mil|Location2.Y=155.746mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13228.35mil|Location2.X=13259.972mil|Location1.Y=124.124mil|Location2.Y=155.746mil|Absolute=True">Un-Routed Net Constraint: Via (13244.161mil,139.935mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13320.87mil|Location2.X=13352.492mil|Location1.Y=494.99mil|Location2.Y=526.612mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13320.87mil|Location2.X=13352.492mil|Location1.Y=494.99mil|Location2.Y=526.612mil|Absolute=True">Un-Routed Net Constraint: Via (13336.681mil,510.801mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13511.027mil|Location2.X=13542.649mil|Location1.Y=284.36mil|Location2.Y=315.982mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13511.027mil|Location2.X=13542.649mil|Location1.Y=284.36mil|Location2.Y=315.982mil|Absolute=True">Un-Routed Net Constraint: Via (13526.838mil,300.171mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13522.024mil|Location2.X=13553.646mil|Location1.Y=-138.646mil|Location2.Y=-107.024mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13522.024mil|Location2.X=13553.646mil|Location1.Y=-138.646mil|Location2.Y=-107.024mil|Absolute=True">Un-Routed Net Constraint: Via (13537.835mil,-122.835mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13522.024mil|Location2.X=13553.646mil|Location1.Y=160.567mil|Location2.Y=192.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13522.024mil|Location2.X=13553.646mil|Location1.Y=160.567mil|Location2.Y=192.189mil|Absolute=True">Un-Routed Net Constraint: Via (13537.835mil,176.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13561.394mil|Location2.X=13593.016mil|Location1.Y=-138.646mil|Location2.Y=-107.024mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13561.394mil|Location2.X=13593.016mil|Location1.Y=-138.646mil|Location2.Y=-107.024mil|Absolute=True">Un-Routed Net Constraint: Via (13577.205mil,-122.835mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13561.394mil|Location2.X=13593.016mil|Location1.Y=160.567mil|Location2.Y=192.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13561.394mil|Location2.X=13593.016mil|Location1.Y=160.567mil|Location2.Y=192.189mil|Absolute=True">Un-Routed Net Constraint: Via (13577.205mil,176.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13593.311mil|Location2.X=13624.933mil|Location1.Y=472.943mil|Location2.Y=504.565mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13593.311mil|Location2.X=13624.933mil|Location1.Y=472.943mil|Location2.Y=504.565mil|Absolute=True">Un-Routed Net Constraint: Via (13609.122mil,488.754mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13600.764mil|Location2.X=13632.386mil|Location1.Y=-138.646mil|Location2.Y=-107.024mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13600.764mil|Location2.X=13632.386mil|Location1.Y=-138.646mil|Location2.Y=-107.024mil|Absolute=True">Un-Routed Net Constraint: Via (13616.575mil,-122.835mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13600.764mil|Location2.X=13632.386mil|Location1.Y=160.567mil|Location2.Y=192.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13600.764mil|Location2.X=13632.386mil|Location1.Y=160.567mil|Location2.Y=192.189mil|Absolute=True">Un-Routed Net Constraint: Via (13616.575mil,176.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13640.134mil|Location2.X=13671.756mil|Location1.Y=-138.646mil|Location2.Y=-107.024mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13640.134mil|Location2.X=13671.756mil|Location1.Y=-138.646mil|Location2.Y=-107.024mil|Absolute=True">Un-Routed Net Constraint: Via (13655.945mil,-122.835mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13640.134mil|Location2.X=13671.756mil|Location1.Y=160.567mil|Location2.Y=192.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13640.134mil|Location2.X=13671.756mil|Location1.Y=160.567mil|Location2.Y=192.189mil|Absolute=True">Un-Routed Net Constraint: Via (13655.945mil,176.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID12GLNKW4YFYYGVE3KJ0WMW5GECQYULE2GGK5EZEERVCDXRJV52WI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=3.937mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12615.95mil|Location2.X=12621.137mil|Location1.Y=-23.96mil|Location2.Y=-18.773mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12615.95mil|Location2.X=12621.137mil|Location1.Y=-23.96mil|Location2.Y=-18.773mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.087mil &lt; 3.937mil) Between Pad C3-2(12617.573mil,-45.151mil) on Bottom Layer And Via (12618.543mil,-5.512mil) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.087mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDFGJR04XYXME0J5VLLZ1GYGRJZJ5YUTAYP23CVNFDLOCBTEHB5FQF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12817.736mil|Location2.X=12864.86mil|Location1.Y=97.224mil|Location2.Y=170.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12817.736mil|Location2.X=12864.86mil|Location1.Y=97.224mil|Location2.Y=170.685mil|Absolute=True">Net Antennae: Via (12837.047mil,116.535mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDADE4ZQCRKVMLM5UMFRTRQ0B5GKBMYHOEOWZIMAOIRMJMYI055LDF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.602mil|Location2.X=12654.476mil|Location1.Y=-507.742mil|Location2.Y=-498.868mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.602mil|Location2.X=12654.476mil|Location1.Y=-507.742mil|Location2.Y=-498.868mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 11.811mil) Between Board Edge And Polygon Region (0 hole(s)) Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.602mil|Location2.X=12654.476mil|Location1.Y=187.689mil|Location2.Y=196.563mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.602mil|Location2.X=12654.476mil|Location1.Y=187.689mil|Location2.Y=196.563mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 11.811mil) Between Board Edge And Polygon Region (29 hole(s)) Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.602mil|Location2.X=12654.476mil|Location1.Y=187.689mil|Location2.Y=196.563mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.602mil|Location2.X=12654.476mil|Location1.Y=187.689mil|Location2.Y=196.563mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 11.811mil) Between Board Edge And Polygon Region (42 hole(s)) Mid-Layer 1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.602mil|Location2.X=12654.476mil|Location1.Y=187.689mil|Location2.Y=196.563mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.602mil|Location2.X=12654.476mil|Location1.Y=187.689mil|Location2.Y=196.563mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 11.811mil) Between Board Edge And Polygon Region (42 hole(s)) Mid-Layer 2 </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

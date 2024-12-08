@@ -1,0 +1,126 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Public\Documents\Altium\RF_PROTO\VHF_TIA\PCB_TIA_UPGRADED.PcbDoc
+Date     : 11/15/2024
+Time     : 2:49:30 PM
+
+Processing Rule : Clearance Constraint (Gap=10mil) (InNetClass('POWER')),(InNetClass('POWER'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=39.37mil) (All),(OnLayer('Board Outline'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=5mil) (InNet('NetR5_2')),(InNet('GND'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=5mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C2-1(12909.731mil,264.706mil) on Bottom Layer And Pad C1-1(12911.818mil,179.706mil) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net GND Between Pad C2-1(12909.731mil,264.706mil) on Bottom Layer And Pad J1-2(12956.155mil,624.141mil) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net GND Between Pad R2-1(12553.004mil,280.406mil) on Bottom Layer And Pad C2-1(12909.731mil,264.706mil) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net VCC Between Pad R1-2(12704.187mil,337.749mil) on Bottom Layer And Pad C2-2(12856.496mil,264.706mil) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net VCC Between Track (12854.731mil,179.706mil)(12856.496mil,179.706mil) on Bottom Layer And Pad C2-2(12856.496mil,264.706mil) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net VCC Between Pad R1-2(12704.187mil,337.749mil) on Bottom Layer And Pad J1-1(12759.305mil,624.141mil) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net VCC Between Pad R4-1(12140.118mil,116.837mil) on Bottom Layer And Track (12764.882mil,76.811mil)(12818.583mil,76.811mil) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net GND Between Pad SMA1-2(13598.898mil,135.079mil) on Top Layer And Pad SMA1-4(13598.898mil,135.079mil) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Polygon  (NONET_L-01_P-001) on Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Polygon  (NONET_L-01_P-001) on Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Polygon  (NONET_L-01_P-001) on Mid-Layer 1 Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Polygon  (NONET_L-01_P-001) on Mid-Layer 2 Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Net VCC Between Via (12837.047mil,116.535mil) from Top Layer to Bottom Layer And Track (12853.793mil,178.768mil)(12854.731mil,179.706mil) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Via (11715.027mil,245.447mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (11792.586mil,-81.719mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (11897.311mil,170.644mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (11902.429mil,473.793mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12066.208mil,-387.23mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12071.326mil,879.305mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12122.441mil,-139.882mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12161.811mil,-139.882mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12244.882mil,129.803mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12244.882mil,228.228mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12244.882mil,31.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12244.882mil,326.654mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12244.882mil,-67.047mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12300.998mil,-196.135mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12343.307mil,326.654mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12379.988mil,-473.057mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12394.949mil,793.872mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12489.581mil,-198.891mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12491.588mil,281.621mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12554.581mil,352.487mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12599.213mil,-165.472mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12638.583mil,-165.472mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12806.366mil,-320.301mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12852.008mil,831.89mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12912.848mil,116.267mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12967.966mil,179.259mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12971.903mil,243.826mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (12971.903mil,283.196mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13016.208mil,-507.309mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13106.366mil,-245.498mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13190.224mil,721.037mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13206.366mil,338.36mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13244.161mil,139.935mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13336.681mil,510.801mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13526.838mil,300.171mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13537.835mil,-122.835mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13537.835mil,176.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13577.205mil,-122.835mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13577.205mil,176.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13609.122mil,488.754mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13616.575mil,-122.835mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13616.575mil,176.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13655.945mil,-122.835mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+   Violation between Un-Routed Net Constraint: Via (13655.945mil,176.378mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.
+Rule Violations :57
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (Disabled)(All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=7.039mil) (Max=9.897mil) (Preferred=9.897mil) (InNetClass('TL'))
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=157.48mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=3.937mil) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (0.087mil < 3.937mil) Between Pad C3-2(12617.573mil,-45.151mil) on Bottom Layer And Via (12618.543mil,-5.512mil) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.087mil]
+Rule Violations :1
+
+Processing Rule : Silk To Solder Mask (Clearance=10mil) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+   Violation between Net Antennae: Via (12837.047mil,116.535mil) from Top Layer to Bottom Layer 
+Rule Violations :1
+
+Processing Rule : Board Clearance Constraint (Gap=0mil) (All)
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 11.811mil) Between Board Edge And Polygon Region (0 hole(s)) Top Layer 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 11.811mil) Between Board Edge And Polygon Region (29 hole(s)) Bottom Layer 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 11.811mil) Between Board Edge And Polygon Region (42 hole(s)) Mid-Layer 1 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 11.811mil) Between Board Edge And Polygon Region (42 hole(s)) Mid-Layer 2 
+Rule Violations :4
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 63
+Waived Violations : 0
+Time Elapsed        : 00:00:01
