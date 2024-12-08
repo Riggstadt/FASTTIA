@@ -1,2 +1,2 @@
 # FASTTIA
-VHF-capable photodiode amplifier
+Temporary repository for manufacturing data of VHF-capable photodiode amplifier.
